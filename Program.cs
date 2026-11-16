@@ -17,7 +17,6 @@ internal static class Run
 
 internal class InterleavedExample
 {
-    private static readonly object m = new object(); //Locks get_counter
     private static readonly object _slotLock = new object(); //Used in InterLeaving Critical Section
     private static int i;
 
@@ -30,7 +29,7 @@ internal class InterleavedExample
         slot = -1;
         array[0] = 0;
         array[1] = 0;
-        
+
         Thread t1 = new Thread(function1);
         Thread t2 = new Thread(function1);
 
@@ -58,10 +57,7 @@ internal class InterleavedExample
 
     private static int get_counter()
     {
-        lock (m)
-        {
-            i++;
-            return i;
-        }
+        i++;
+        return i;
     }
 }

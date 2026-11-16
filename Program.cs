@@ -9,13 +9,13 @@ internal static class Run
 
         for (var run = 0; run < runCount; run++)
         {
-            var example = new AtomicExample();
+            var example = new InterleavedExample();
             example.Runner();
         }
     }
 }
 
-internal sealed class AtomicExample
+internal class InterleavedExample
 {
     private static readonly object m = new object(); //Locks get_counter
     private static readonly object _slotLock = new object(); //Used in InterLeaving Critical Section
